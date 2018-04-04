@@ -1,4 +1,4 @@
-Rails.application.configure do
+protospace_in_dev_master::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
