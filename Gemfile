@@ -35,3 +35,4 @@ group :production do
   # Use easily Heroku with Rails
   gem 'rails_12factor'
 end
+
