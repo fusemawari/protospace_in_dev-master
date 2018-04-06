@@ -30,9 +30,6 @@ gem 'rails_12factor', group: :production
 end
 
 group :production do
-  # Use postgresql as the database for Active Record
-  gem 'pg', '~> 0.15'
-  # Use easily Heroku with Rails
-  gem 'rails_12factor'
+  gem 'pg'
 end
 
