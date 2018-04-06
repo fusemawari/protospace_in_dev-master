@@ -16,6 +16,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'kaminari'
+gem 'bootstrap', '~> 4.0.0'
 
 group :development, :test do
   gem 'byebug'
@@ -24,7 +26,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'sqlite3', group: :development
-gem 'pg', group: :production
-gem 'rails_12factor', group: :production
 end
+
+gem 'paperclip', '~> 5.0'
+gem 'aws-sdk', '~> 2.3'
