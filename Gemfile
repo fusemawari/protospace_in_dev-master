@@ -17,7 +17,10 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
-gem 'bootstrap', '~> 4.0.0'
+
+
+
+
 
 group :development, :test do
   gem 'byebug'
