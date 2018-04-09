@@ -329,12 +329,20 @@ body {
       border-radius: 50%;
     }
 
-    .media-body{
-      .media-heading{
-      margin-top: 0;
-    margin-bottom: 5px;
-     }
+    .col-md-6__likes{
+       content: " ";
+       display: table;
+
+      .like-box{
+        float: right;
+        width: 268px;
+        margin: 0 -1px 15px 0;
+      }
     }
+        .decrement-button{
+
+        }
+
 
     button {
       padding-right: 35px;
