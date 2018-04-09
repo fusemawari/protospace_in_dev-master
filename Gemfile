@@ -19,7 +19,9 @@ gem 'rmagick'
 gem 'kaminari'
 
 
-
+group :production do
+  gem 'pg'
+end
 
 
 group :development, :test do
