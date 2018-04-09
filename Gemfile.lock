@@ -50,10 +50,6 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -147,7 +143,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    popper_js (1.12.9)
+    pg (1.0.0)
     pry (0.11.1)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -241,7 +237,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 2.3)
-  bootstrap (~> 4.0.0)
   bootstrap-sass
   byebug
   carrierwave
@@ -254,6 +249,7 @@ DEPENDENCIES
   kaminari
   mysql2 (~> 0.3.18)
   paperclip (~> 5.0)
+  pg
   pry-rails
   rails (= 4.2.5)
   rmagick
