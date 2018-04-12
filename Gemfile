@@ -17,6 +17,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
+gem 'fog'
 
 group :production do
 end
@@ -31,3 +32,6 @@ end
 
 gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '~> 2.3'
+
+
+
