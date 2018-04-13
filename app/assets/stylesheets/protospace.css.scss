@@ -349,6 +349,20 @@ body {
           clear: both;
         }
 
+      form {
+        float: right;
+        width: 268px;
+        margin: 0 -1px 15px 0;
+        input {
+          width: 110px;
+          height: 62px;
+          float: left;
+          margin-right: 10px;
+          clear: both;
+        }
+      }
+
+
 
     button {
       padding-right: 35px;

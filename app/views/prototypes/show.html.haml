@@ -18,6 +18,8 @@
             =  form_for [@prototype, @like] do |f|
               = f.label :image, class: 'form__mask__image' do
                 =  f.submit 'like' ,class: 'btn btn-default like-btn'
+          %form{aciton: "edit", method: "get"}
+            %input{type: "submit", value: "edit"}
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
