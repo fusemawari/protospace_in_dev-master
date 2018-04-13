@@ -29,6 +29,9 @@ class PrototypesController < ApplicationController
     @like = Like.new()
   end
 
+  def edit
+  end
+
   private
 
   def set_prototype
