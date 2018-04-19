@@ -18,7 +18,7 @@
             =  form_for [@prototype, @like] do |f|
               = f.label :image, class: 'form__mask__image' do
                 =  f.submit 'like' ,class: 'btn btn-default like-btn'
-          %form{aciton: "edit", method: "get"}
+          %form{method: :get, action: "#{@prototype.id}/edit"}
             %input{type: "submit", value: "edit"}
   .row
     .col-md-9.image-box

@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
     if params[:user_id]
@@ -30,6 +30,13 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @prototype.user.id = current_user.id
+       @prototype.update(prototype_params)
+    end
+    redirect_to :root
   end
 
   private
