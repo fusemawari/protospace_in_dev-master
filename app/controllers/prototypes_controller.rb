@@ -2,12 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @prototypes = @user.prototypes
-    else
-      @prototypes = Prototype.all # ここでアソシエーションが生きる
-    end
+      @prototypes = Prototype.all
   end
 
   def new
@@ -25,7 +20,6 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
     @like = Like.new()
   end
 

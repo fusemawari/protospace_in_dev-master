@@ -15,10 +15,8 @@
               = @prototype.user.position
         .col-md-6
           .like-box
-            =  form_for [@prototype, @like] do |f|
-              = f.label :image, class: 'form__mask__image' do
-                =  f.submit 'like' ,class: 'btn btn-default like-btn'
-          %form{method: :get, action: "#{@prototype.id}/edit"}
+            = render 'likes/like_links', prototype: @prototype, like: @like
+          %form{aciton: "edit", method: "get"}
             %input{type: "submit", value: "edit"}
   .row
     .col-md-9.image-box
