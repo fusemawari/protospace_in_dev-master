@@ -55,10 +55,6 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
-    carrierwave (1.2.1)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
     climate_control (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.1.1)
@@ -240,7 +236,6 @@ DEPENDENCIES
   aws-sdk (~> 2.3)
   bootstrap-sass
   byebug
-  carrierwave
   coffee-rails (~> 4.1.0)
   devise
   erb2haml
