@@ -1,16 +1,21 @@
 .like-box{id: "like-link-#{prototype.id}"}
   - if user_signed_in?
     - if prototype.like_user(current_user.id)
-      = button_to prototype_like_path(like_id: like.id, prototype_id: prototype.id), method: :delete, id: "like-buttons", remote: true do
-        .heart-empty{id: "heart-#{prototype.id}"}
-        = image_tag("icon_red_heart.svg")
-        = "LIKE"
-        %span
-          = prototype.likes_count
+      = button_to prototype_like_path(id: prototype.id, prototype_id: prototype.id), method: :delete, id: "like-button", remote: true do
+        .icon{id: "heart-#{prototype.id}"}
+          = image_tag("icon_heart.svg")
+          %span
+            = "LIKE"
+            = prototype.likes_count
     - else
-      = button_to prototype_likes_path(prototype), id: "like-buttons", remote: true do
-        .heart{id: "heart-#{prototype.id}"}
-        = image_tag("icon_heart.svg")
-        = "LIKE"
-        %span
-          = prototype.likes_count
+      = button_to prototype_likes_path(prototype),id: "like-button", remote: true do
+        .icon{id: "heart-#{prototype.id}"}
+          = image_tag("icon_red_heart.svg")
+          %span
+            = "LIKE"
+            = prototype.likes_count
+  - else
+    = button_to new_user_session_path, id: "like-button" do
+      .giticon
+        = image_tag("github.svg")
+
