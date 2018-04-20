@@ -16,7 +16,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
-gem 'fog'
+
 
 group :production do
   gem 'rails_12factor'
