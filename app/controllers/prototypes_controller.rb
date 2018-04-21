@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
       @prototypes = Prototype.all
@@ -19,15 +19,23 @@ class PrototypesController < ApplicationController
      end
   end
 
+  def destroy
+     if @prototype.user_id == current_user.id
+      @prototype.destroy
+    end
+    redirect_to root_path, alert: "削除しました"
+  end
+
   def show
     @like = Like.new()
   end
 
   def edit
+
   end
 
   def update
-    if @prototype.user.id = current_user.id
+    if @prototype.user.id == current_user.id
        @prototype.update(prototype_params)
     end
     redirect_to :root
