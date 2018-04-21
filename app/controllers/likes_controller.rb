@@ -2,9 +2,10 @@ class LikesController < ApplicationController
 
   before_action :set_variables
   def create
-    @like = Like.create(
+    @like = Like.new(
       prototype_id: params[:prototype_id],
       user_id: current_user.id)
+    @like.save
     end
 
   def destroy
