@@ -26,7 +26,8 @@ class UsersController < ApplicationController
       :position,
       :profile,
       :occupation,
-      :avatar
+      :avatar,
+      :id
     )
   end
 end

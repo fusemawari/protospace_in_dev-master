@@ -16,11 +16,8 @@
     .col-md-6.clearfix
       = render 'likes/like_links', prototype: @prototype, like: @like
         - if user_signed_in? && @prototype.user_id == current_user.id
-        %form{method: :get, action: "#{@prototype.id}/edit"}
-          %input{type: "submit", value: "edit"}
+        = button_to 'EDIT', "/prototypes/#{@prototype.id}/edit", method: 'get'
         = button_to 'Delete', prototype_path(@prototype), method: 'delete'
-
-
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
@@ -45,3 +42,13 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+    = render 'comments/comments', comments: @comments, prototype: @prototype,comment: @comment
+
+  = form_for [@prototype,@comment] do |f|
+    %h4 Write a comment
+    .row
+    .form-group.col-md-10
+      = f.text_area :content, placeholder: "Your comments", rows: 5, size: '80', id: 'textbox'
+    .form-group.col-md-2
+      = f.submit :COMMENT, class: "btn btn-primary"
+

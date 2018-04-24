@@ -13,32 +13,39 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
-      redirect_to :root, notice: 'New prototype was successfully created'
+      redirect_to :root, notice: '投稿完了'
     else
-      redirect_to ({ action: 'new' }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: 'new' }), alert: '登録できてねーっっっぞ'
      end
   end
 
   def destroy
      if @prototype.user_id == current_user.id
       @prototype.destroy
+      redirect_to root_path, notice: "削除しました"
     end
-    redirect_to root_path, alert: "削除しました"
   end
 
   def show
+    @comment = Comment.new
     @like = Like.new()
+    @comments = @prototype.comments
+
+
   end
 
   def edit
-
+    @main = @prototype.captured_images[0]
+    @sub  = @prototype.captured_images.sub
+    # binding.pry
   end
 
   def update
-    if @prototype.user.id == current_user.id
-       @prototype.update(prototype_params)
-    end
-    redirect_to :root
+    if @prototype.update(prototype_params)
+    redirect_to root_path, notice: '変更完了'
+  else
+    redirect_to edit_prototype_path(@prototype), alert: '変更失敗・・・'
+  end
   end
 
   private
@@ -53,7 +60,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:content, :status, :id]
     )
   end
 end
