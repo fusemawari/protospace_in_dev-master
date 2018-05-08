@@ -125,7 +125,17 @@ body {
     line-height: 30px;
   }
 }
+.proto-content .btn{
+    font-size: 1rem;
+    padding: 5px;
+    min-width: 50px;
+    border: 1px solid #eee;
+    color: red;
+}
 
+.proto-content .proto-meta .proto-posted {
+  float: right;
+}
 
 /*-- Button groups --------------------------------- */
 .btn-group .btn {
@@ -668,6 +678,20 @@ body {
   color: #a94442;
 }
 
+}
+.tags-list ul, .tags-list li {
+  list-style: none;
+}
+.tags-list li a {
+    display: block;
+    text-align: left;
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+footer p {
+      text-align: center;
 }
 
 

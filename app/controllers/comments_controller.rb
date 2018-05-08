@@ -8,8 +8,7 @@ class CommentsController < ApplicationController
       @comments = @prototype.comments.length
       respond_to do |format|
         format.json
-        format.html{redirect_to prototype_path(@prototype)}
-     # binding.pry
+        format.html{ redirect_to prototype_path(@prototype) }
       end
    else redirect_to prototype_path(@prototype), alert: 'コメントに失敗しました'
      end
@@ -27,11 +26,6 @@ class CommentsController < ApplicationController
 
   def edit
      @comment = @prototype.comments.find(params[:id])
-       respond_to do |format|
-        format.html { redirect_to prototype_path(@prototype) }
-        format.json { @id_comment = @comment.id }
-       end
-
   end
 
   def update
@@ -55,6 +49,7 @@ class CommentsController < ApplicationController
   end
   def set_prototype
     @prototype = Prototype.find(params[:prototype_id])
+    @id_comment = "comments-#{@prototype.id}"
   end
 end
 

@@ -1,3 +1,0 @@
-var idComment = <%= @id_comment %>;
-
-$('.media[data-id="'+idComment+'"]').parent().html("<%= escape_javascript(render 'comments/comments', comments: @comments, prototype: @prototype) %>");

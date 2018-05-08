@@ -38,17 +38,16 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - @tag_list.each do |tag|
+          %li
+            = link_to tag.name, tag_path(tag.id), class: "btn btn-default"
     = render 'comments/comments', comments: @comments, prototype: @prototype,comment: @comment
 
   = form_for [@prototype,@comment] do |f|
     %h4 Write a comment
     .row
     .form-group.col-md-10
-      = f.text_area :content, placeholder: "Your comments", rows: 5, size: '80', id: 'textbox'
+      = f.text_area :content, placeholder: "Your comments", rows: 5, size: '80'
     .form-group.col-md-2
       = f.submit :COMMENT, class: "btn btn-primary"
 

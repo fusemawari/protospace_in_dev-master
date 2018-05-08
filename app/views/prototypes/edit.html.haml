@@ -42,5 +42,12 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-3
+          %h4 Tag List
+          %ul.proto-tag-list.list-inline
+            %li
+              %a{href: "#", class: "btn btn-default"} iPad
+            %li
+              %a{href: "#", class: "btn btn-default"} wireframe
       .row.text-center.proto-btn
         = f.submit "SAVE", id: "button", class: "btn btn-lg btn-primary btn-block"

@@ -18,7 +18,7 @@ function buildHtml(comment){
                         </h4>
                       </div>
                         <a data-confirm="削除しますか？" class='comment-remove comment-user__btn comment-user__btn--remove js-remove-btn' >削除</a>
-                        <a class='comment-edit comment-user__btn comment-user__btn--edit data-toggle="modal" data-target="#basicModal"js-edit-btn'>編集</a>
+                        <a class='comment-edit comment-user__btn comment-user__btn--edit data-toggle="modal" data-target="#Modal-${comment.id}"js-edit-btn'>編集</a>
                     </div>`
     return comments;
 }
@@ -45,8 +45,9 @@ function buildHtml(comment){
       console.log(1)
       var html =buildHtml(data);
       $('#comment_list').append(html)
+      $('#comment_content').val('')
       $('.num').html(`(${data.count})`)
-      $('#textbox').val('')
+       console.log(7)
     })
     .fail(function(){
     alert('error');
@@ -55,20 +56,5 @@ function buildHtml(comment){
 
   $(document).on('click', '.comment-user__btn--remove',function(){
     $(this).parent().remove();
-  });
-
-  $(document).on('click', '.comment-user__btn--edit',function(){
-    if(!$('#top-aligned-media data-id="${comment.id}" p').hasClass('on')){
-       $('#top-aligned-media data-id="${comment.id}" p').addClass('on');
-       var txt = $('#top-aligned-media data-id="${comment.id}" p').text();
-       $('#top-aligned-media data-id="${comment.id}" p').html('<input type="text" value="'+txt+'" />');
-       $('#top-aligned-media data-id="${comment.id}" p > input').focus().blur(function(){
-           var inputVal = $('#top-aligned-media data-id="${comment.id}" p').val();
-           if(inputVal===''){
-               inputVal = $('#top-aligned-media data-id="${comment.id}" p').attr("defaultValue");
-           };
-           $('#top-aligned-media data-id="${comment.id}" p').parent().removeClass('on').text(inputVal);
-      });
-    };
   });
 });
