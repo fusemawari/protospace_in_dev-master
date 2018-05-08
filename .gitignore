@@ -42,4 +42,3 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-config/initializers/carrierwave.rb
