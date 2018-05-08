@@ -1,0 +1,35 @@
+.row.proto-comments{id: "comments-#{prototype.id}"}
+%h4.col-md-12
+  Comments
+  %span.num (#{comments.count})
+#comment_area.col-md-8
+  #comment_list
+    - comments.each do |com|
+      .media{data: {'id' => com.id}}
+        .media-left
+          = link_to "/users/#{com.user_id}"  do
+            = image_tag(com.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+        %h4#top-aligned-media.media-body
+          = com.user.name
+          %p#comment-content
+            = com.content
+        - if com.user_id == current_user.id
+          = button_to '削除', prototype_comment_path(id: com.id, prototype_id: prototype.id), data: { confirm: '削除しますか？'}, method: :delete
+          %button{"data-target" => "#modal-#{com.id}", "data-toggle" => "modal"}
+            = '編集'
+
+  - comments.each do |com|
+    .modal{:tabindex => "-1", id: "modal-#{com.id}"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{"data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#modal-label.modal-title 内容を編集してください
+            = form_for [@prototype,com] do |f|
+              .modal-body
+                .form-group.col-md-10
+                  = f.text_area :content, placeholder: "Your comments", rows: 5, size: '80', id: 'textbox'
+                .form-group.col-md-2
+                  = f.submit :SAVE, class: "btn btn-primary",id: "save"
+

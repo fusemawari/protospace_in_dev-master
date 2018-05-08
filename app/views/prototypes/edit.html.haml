@@ -11,18 +11,28 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
-            = f.fields_for :captured_images do |image|
+            = f.fields_for :captured_images,@main do |image|
               %img
+              = image_tag(image.object.content, class: 'img-responsive img-size-fix', style: "margin: 0 auto; height:100%; width:100%;")
               = image.file_field :content, onchange: "previewFile()"
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
-          %ul.proto-sub-list.list-group
-            - 3.times do |i|
-              %li.list-group-item.col-md-4
-                .image-upload
-                  = f.fields_for :captured_images do |image|
-                    %img
+          - if @sub.blank?
+            %ul.proto-sub-list.list-group
+              - 3.times do |i|
+                %li.list-group-item.col-md-4
+                  .image-upload
+                    = f.fields_for :captured_images do |image|
+                      %img
+                      = image.file_field :content
+                      = image.hidden_field :status, value: "sub"
+          - else
+            %ul.proto-sub-list.list-group
+              = f.fields_for :captured_images, @sub do |image|
+                %li.list-group-item.col-md-4
+                  .image-upload
+                    = image_tag(image.object.content,class: 'img-responsive img-size-fix', style: "margin: 0 auto; height:100%; width:100%;")
                     = image.file_field :content
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
@@ -32,5 +42,12 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-3
+          %h4 Tag List
+          %ul.proto-tag-list.list-inline
+            %li
+              %a{href: "#", class: "btn btn-default"} iPad
+            %li
+              %a{href: "#", class: "btn btn-default"} wireframe
       .row.text-center.proto-btn
-        = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
+        = f.submit "SAVE", id: "button", class: "btn btn-lg btn-primary btn-block"

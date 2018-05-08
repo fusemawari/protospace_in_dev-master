@@ -3,42 +3,51 @@ class PrototypesController < ApplicationController
 
   def index
       @prototypes = Prototype.all
+
   end
 
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
+    @prototype.tags.build
   end
 
   def create
-    @prototype = Prototype.new(prototype_params)
+     @prototype = Prototype.new(prototype_params)
+     # name_tags = @prototype.tags
     if @prototype.save
-      redirect_to :root, notice: 'New prototype was successfully created'
+
+#        @tags = @prototype.save_tags(name_tags)
+# binding.pry
+      redirect_to :root, notice: '投稿完了'
     else
-      redirect_to ({ action: 'new' }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: 'new' }), alert: '登録できてねーっっっぞ'
      end
   end
 
   def destroy
      if @prototype.user_id == current_user.id
       @prototype.destroy
+      redirect_to root_path, notice: "削除しました"
     end
-    redirect_to root_path, alert: "削除しました"
   end
 
   def show
+    @comment = Comment.new
     @like = Like.new()
+    @comments = @prototype.comments
+    @tag_list = @prototype.tags
   end
 
   def edit
-
   end
 
   def update
-    if @prototype.user.id == current_user.id
-       @prototype.update(prototype_params)
-    end
-    redirect_to :root
+    if @prototype.update(prototype_params)
+    redirect_to root_path, notice: '変更完了'
+  else
+    redirect_to edit_prototype_path(@prototype), alert: '変更失敗・・・'
+  end
   end
 
   private
@@ -53,7 +62,9 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      :tag_name,
+      captured_images_attributes: [:content, :status, :id],
+      tags_attributes: [:id, :name]
     )
   end
 end
